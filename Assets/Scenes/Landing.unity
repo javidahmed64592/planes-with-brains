@@ -359,11 +359,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 816c0ecdacb9f2f4eb1b499973cab0fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numObjects: 2000
+  numObjects: 2500
   xMax: 1500
-  xInner: 300
+  xInner: 400
   zMax: 1500
-  zInner: 300
+  zInner: 150
   vertScale: 6
   objects:
   - {fileID: 642979283950271044, guid: b2f4a5198794c614ebfc78782c8c8dda, type: 3}
@@ -1119,16 +1119,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 943335d44c5f6f346b256f70c150f36b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  povs:
-  - {fileID: 0}
-  - {fileID: 0}
-  plane: {fileID: 0}
-  speed: 50
+  offset: {x: 10, y: 5, z: 5}
+  smoothStep: 25
 --- !u!1001 &1031288658
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1292,11 +1289,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 816c0ecdacb9f2f4eb1b499973cab0fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numObjects: 2000
+  numObjects: 2500
   xMax: 1500
-  xInner: 300
+  xInner: 400
   zMax: 1500
-  zInner: 300
+  zInner: 150
   vertScale: 6
   objects:
   - {fileID: 8152715327919632515, guid: 4a8ae8ef927aecb4dbcf2f73186eecd6, type: 3}
@@ -1337,10 +1334,6 @@ PrefabInstance:
     - target: {fileID: 7324808762114681985, guid: affbf880857ec9543b6e65c518c949bb, type: 3}
       propertyPath: m_Name
       value: Ground_Runway
-      objectReference: {fileID: 0}
-    - target: {fileID: 7324808762114681985, guid: affbf880857ec9543b6e65c518c949bb, type: 3}
-      propertyPath: m_Layer
-      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1588,7 +1581,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   population: {fileID: 2093722844}
-  maxCount: 100
+  maxCount: 60
   hudText: {fileID: 930228153}
 --- !u!4 &1874602610
 Transform:
@@ -1805,7 +1798,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2093722842}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1132.4, y: 212.6, z: -87.6}
+  m_LocalPosition: {x: 1132.4, y: 212.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1824,9 +1817,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ad32da5e9ae3e24fb6036abb0b8c896, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camTransform: {fileID: 963194228}
-  offset: {x: 10, y: 5, z: 5}
-  smoothStep: 25
   PlanePrefab: {fileID: 3927906135010957283, guid: 9e7bb2bcdedba75469f3f1dfa7e5bd09, type: 3}
   PlaneMeshes:
   - {fileID: -6311886340388200329, guid: 42ece5cdbee354a45ae13206bcd6d3ad, type: 3}
@@ -1842,8 +1832,10 @@ MonoBehaviour:
   - {fileID: -4390258803468829966, guid: 42ece5cdbee354a45ae13206bcd6d3ad, type: 3}
   - {fileID: 876430415031741119, guid: 42ece5cdbee354a45ae13206bcd6d3ad, type: 3}
   - {fileID: -1097634087852925045, guid: 42ece5cdbee354a45ae13206bcd6d3ad, type: 3}
-  populationSize: 250
+  populationSize: 200
   mutationRate: 3
+  spacing: 1
+  population: []
 --- !u!1 &2099924474
 GameObject:
   m_ObjectHideFlags: 0
@@ -2141,10 +2133,6 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3201360408279853535, guid: 060fef3ebb760264bb178b58db7af39d, type: 3}
       propertyPath: m_Name
-      value: Target
-      objectReference: {fileID: 0}
-    - target: {fileID: 3201360408279853535, guid: 060fef3ebb760264bb178b58db7af39d, type: 3}
-      propertyPath: m_TagString
       value: Target
       objectReference: {fileID: 0}
     - target: {fileID: 7558449408574686198, guid: 060fef3ebb760264bb178b58db7af39d, type: 3}
