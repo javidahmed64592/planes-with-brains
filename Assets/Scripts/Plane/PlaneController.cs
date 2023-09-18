@@ -27,9 +27,9 @@ public class PlaneController : MonoBehaviour
 
     // Motion
     float throttle = 100f;
-    public float roll = 0f;
-    public float pitch = 0f;
-    public float yaw = 0f;
+    float roll = 0f;
+    float pitch = 0f;
+    float yaw = 0f;
     [SerializeField] float smoothStepScaling = 2f;
 
     private float responseModifier
