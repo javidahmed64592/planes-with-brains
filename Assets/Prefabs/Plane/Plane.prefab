@@ -259,7 +259,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d3d2c52430e47f4bae462f0b561dc34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  layerNodes: 070000000500000004000000
+  layerNodes: 060000000500000004000000
   weightsRange:
   - -0.3
   - 0.3
