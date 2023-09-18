@@ -4,7 +4,7 @@ public class PlaneController : MonoBehaviour
 {
     // Plane object
     Rigidbody rb;
-    [SerializeField] Transform propeller;
+    public Transform propeller;
 
 
     Vector3 planeStart;

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PopulationController : MonoBehaviour
@@ -10,7 +11,9 @@ public class PopulationController : MonoBehaviour
     [SerializeField] float smoothStep = 10f;
 
     // Population variables
-    [SerializeField] GameObject[] PlanePrefabs;
+    [SerializeField] GameObject PlanePrefab;
+    [SerializeField] Mesh[] PlaneMeshes;
+    [SerializeField] Mesh[] PlanePropellerMeshes;
 
     public int populationSize;
     [SerializeField] float mutationRate;
@@ -29,9 +32,19 @@ public class PopulationController : MonoBehaviour
     {
         for (int _ = 0; _ < populationSize; _++)
         {
-            GameObject Plane = Instantiate(PlanePrefabs[Random.Range(0, PlanePrefabs.Length)], transform.position, Quaternion.identity);
-            Plane.transform.parent = transform;
-            population.Add(Plane.GetComponent<PlaneController>());
+            // Spawning a new plane
+            GameObject PlaneObj = Instantiate(PlanePrefab, transform.position, Quaternion.identity);
+            PlaneObj.transform.parent = transform;
+            PlaneController planeController = PlaneObj.GetComponent<PlaneController>();
+            population.Add(planeController);
+
+            // Selecting random mesh for different colour planes
+            int randomPlaneIndex = Random.Range(0, PlaneMeshes.Length);
+            PlaneObj.GetComponent<MeshFilter>().mesh = PlaneMeshes[randomPlaneIndex];
+            PlaneObj.GetComponent<MeshCollider>().sharedMesh = PlaneMeshes[randomPlaneIndex];
+            
+            planeController.propeller.GetComponent<MeshFilter>().mesh = PlanePropellerMeshes[randomPlaneIndex];
+            planeController.propeller.GetComponent<MeshCollider>().sharedMesh = PlanePropellerMeshes[randomPlaneIndex];
         }
     }
 
