@@ -4,6 +4,7 @@ public class PlaneController : MonoBehaviour
 {
     // Plane object
     Rigidbody rb;
+    float planeMass;
     public Transform propeller;
 
     Vector3 planeStart;
@@ -18,7 +19,6 @@ public class PlaneController : MonoBehaviour
             ) / 180;
         }
     }
-    Quaternion propellerStartOrientation;
 
     // Config
     [SerializeField] float maxThrust = 200f;
@@ -27,16 +27,16 @@ public class PlaneController : MonoBehaviour
 
     // Motion
     float throttle = 100f;
-    float roll = 0f;
-    float pitch = 0f;
-    float yaw = 0f;
+    public float roll = 0f;
+    public float pitch = 0f;
+    public float yaw = 0f;
     [SerializeField] float smoothStepScaling = 2f;
 
     private float responseModifier
     {
         get
         {
-            return (rb.mass / 10f) * responsiveness;
+            return (planeMass / 10f) * responsiveness;
         }
     }
 
@@ -57,9 +57,9 @@ public class PlaneController : MonoBehaviour
     {
         target = GameObject.FindWithTag("Target").transform;
         rb = GetComponent<Rigidbody>();
+        planeMass = rb.mass;
         planeStart = transform.position;
         startDifFromTarget = currentDifFromTarget;
-        propellerStartOrientation = propeller.rotation;
 
         // Configuring neural network
         nn = GetComponent<NeuralNetwork>();
@@ -77,9 +77,6 @@ public class PlaneController : MonoBehaviour
             _input[3] = planeOrientation.x;
             _input[4] = planeOrientation.y;
             _input[5] = planeOrientation.z;
-            _input[6] = rb.velocity.x / rb.velocity.magnitude;
-            _input[7] = rb.velocity.y / rb.velocity.magnitude;
-            _input[8] = rb.velocity.z / rb.velocity.magnitude;
             return _input;
         }
     }
