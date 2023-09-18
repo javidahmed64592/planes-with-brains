@@ -11,6 +11,7 @@ public class PopulationController : MonoBehaviour
 
     public int populationSize;
     [SerializeField] float mutationRate;
+    [SerializeField] float spacing;
 
     public List<PlaneController> population = new List<PlaneController>();
 
@@ -24,10 +25,11 @@ public class PopulationController : MonoBehaviour
 
     private void Initialise()
     {
-        for (int _ = 0; _ < populationSize; _++)
+        for (int i = 0; i < populationSize; i++)
         {
             // Spawning a new plane
-            GameObject PlaneObj = Instantiate(PlanePrefab, transform.position, Quaternion.identity);
+            Vector3 posOffset = new Vector3(-Mathf.Abs(i - (populationSize/2) + 0.5f), 0f, i - (populationSize / 2) + 0.5f) * spacing;
+            GameObject PlaneObj = Instantiate(PlanePrefab, transform.position + posOffset, Quaternion.identity);
             PlaneObj.transform.parent = transform;
             PlaneController planeController = PlaneObj.GetComponent<PlaneController>();
             population.Add(planeController);
