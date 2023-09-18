@@ -4,12 +4,6 @@ using UnityEngine;
 
 public class PopulationController : MonoBehaviour
 {
-    // Camera variables
-    [SerializeField] Transform camTransform;
-
-    [SerializeField] Vector3 offset;
-    [SerializeField] float smoothStep = 10f;
-
     // Population variables
     [SerializeField] GameObject PlanePrefab;
     [SerializeField] Mesh[] PlaneMeshes;
@@ -18,7 +12,7 @@ public class PopulationController : MonoBehaviour
     public int populationSize;
     [SerializeField] float mutationRate;
 
-    List<PlaneController> population = new List<PlaneController>();
+    public List<PlaneController> population = new List<PlaneController>();
 
     float maxAliveFitness = 0;
     float _maxFitness = 0f;
@@ -48,24 +42,27 @@ public class PopulationController : MonoBehaviour
         }
     }
 
-    public int bestAgent()
+    public int bestAgent
     {
-        maxAliveFitness = 0;
-        int bestAgent = 0;
-
-        for (int i = 0; i < population.Count; i++)
+        get
         {
-            float fitness = population[i].fitness();
-            bool isAlive = population[i].isAlive;
+            maxAliveFitness = 0;
+            int bestAgent = 0;
 
-            if (fitness > maxAliveFitness && isAlive)
+            for (int i = 0; i < population.Count; i++)
             {
-                maxAliveFitness = fitness;
-                bestAgent = i;
-            }
-        }
+                float fitness = population[i].fitness();
+                bool isAlive = population[i].isAlive;
 
-        return bestAgent;
+                if (fitness > maxAliveFitness && isAlive)
+                {
+                    maxAliveFitness = fitness;
+                    bestAgent = i;
+                }
+            }
+
+            return bestAgent;
+        }
     }
 
     private float maxFitness()
@@ -139,16 +136,5 @@ public class PopulationController : MonoBehaviour
         }
 
         return index;
-    }
-
-    private void FixedUpdate()
-    {
-        // Target
-        Transform target = population[bestAgent()].transform;
-
-        // Update position and rotation
-        Vector3 targetPosition = target.position + offset;
-        camTransform.SetPositionAndRotation(Vector3.Lerp(camTransform.position, targetPosition, 1 / smoothStep),
-            Quaternion.Slerp(camTransform.rotation, Quaternion.LookRotation(target.position - camTransform.position), 1 / smoothStep));
     }
 }

@@ -4,26 +4,36 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    [SerializeField] Transform[] povs;
-    [SerializeField] Transform plane;
-    [SerializeField] float speed;
+    // Camera variables
+    [SerializeField] Vector3 offset;
+    [SerializeField] float smoothStep = 10f;
 
-    private int index = 0;
-    private Vector3 target;
+    // Population variables
+    PopulationController population;
+    Transform target;
+
+    private void Awake()
+    {
+        population = GameObject.FindGameObjectWithTag("Population").GetComponent<PopulationController>();
+    }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1)) index = 0;
-        else if (Input.GetKeyDown(KeyCode.Alpha2)) index = 1;
-        else if (Input.GetKeyDown(KeyCode.Alpha3)) index = 2;
-        else if (Input.GetKeyDown(KeyCode.Alpha4)) index = 3;
-
-        target = povs[index].position;
+        if (population)
+        {
+            // Target
+            target = population.population[population.bestAgent].transform;
+        }
     }
 
     private void FixedUpdate()
     {
-        transform.position = Vector3.MoveTowards(transform.position, target, Time.deltaTime * speed);
-        transform.LookAt(plane.position);
+        if (target)
+        {
+            // Update position and rotation
+            Vector3 targetPosition = target.position + offset;
+            transform.SetPositionAndRotation(Vector3.Lerp(transform.position, targetPosition, 1 / smoothStep),
+                Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(target.position - transform.position), 1 / smoothStep));
+        }
     }
 }

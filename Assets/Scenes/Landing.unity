@@ -456,7 +456,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 1
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -1570,7 +1570,7 @@ GameObject:
   - component: {fileID: 1874602609}
   m_Layer: 0
   m_Name: GameController
-  m_TagString: Untagged
+  m_TagString: GameController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1792,7 +1792,7 @@ GameObject:
   - component: {fileID: 2093722844}
   m_Layer: 0
   m_Name: Population
-  m_TagString: Untagged
+  m_TagString: Population
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1827,13 +1827,21 @@ MonoBehaviour:
   camTransform: {fileID: 963194228}
   offset: {x: 10, y: 5, z: 5}
   smoothStep: 25
-  PlanePrefabs:
-  - {fileID: 3927906135010957283, guid: 9e7bb2bcdedba75469f3f1dfa7e5bd09, type: 3}
-  - {fileID: 4298181263769627710, guid: 56db55287681dca4e89ecfade2c3554c, type: 3}
-  - {fileID: 1615764611536524930, guid: f2c1f79fd6ab608449472c0e531f8690, type: 3}
-  - {fileID: 6500077431857751813, guid: 6f405c5f7e074f54b8a98c95202757e3, type: 3}
-  - {fileID: 7664125404037582657, guid: 1ac2f327975a8444780e2b41b03c0162, type: 3}
-  - {fileID: 8138202801436852505, guid: f88a45a672d901d4fa1041ab24c6dc43, type: 3}
+  PlanePrefab: {fileID: 3927906135010957283, guid: 9e7bb2bcdedba75469f3f1dfa7e5bd09, type: 3}
+  PlaneMeshes:
+  - {fileID: -6311886340388200329, guid: 42ece5cdbee354a45ae13206bcd6d3ad, type: 3}
+  - {fileID: 1216576363615740852, guid: 42ece5cdbee354a45ae13206bcd6d3ad, type: 3}
+  - {fileID: -8764244397205908928, guid: 42ece5cdbee354a45ae13206bcd6d3ad, type: 3}
+  - {fileID: 1373282406394473993, guid: 42ece5cdbee354a45ae13206bcd6d3ad, type: 3}
+  - {fileID: 1005761328349830598, guid: 42ece5cdbee354a45ae13206bcd6d3ad, type: 3}
+  - {fileID: 1752470930077866314, guid: 42ece5cdbee354a45ae13206bcd6d3ad, type: 3}
+  PlanePropellerMeshes:
+  - {fileID: -8684740389032505875, guid: 42ece5cdbee354a45ae13206bcd6d3ad, type: 3}
+  - {fileID: -2444684135847961561, guid: 42ece5cdbee354a45ae13206bcd6d3ad, type: 3}
+  - {fileID: 8638541301443437355, guid: 42ece5cdbee354a45ae13206bcd6d3ad, type: 3}
+  - {fileID: -4390258803468829966, guid: 42ece5cdbee354a45ae13206bcd6d3ad, type: 3}
+  - {fileID: 876430415031741119, guid: 42ece5cdbee354a45ae13206bcd6d3ad, type: 3}
+  - {fileID: -1097634087852925045, guid: 42ece5cdbee354a45ae13206bcd6d3ad, type: 3}
   populationSize: 250
   mutationRate: 3
 --- !u!1 &2099924474
