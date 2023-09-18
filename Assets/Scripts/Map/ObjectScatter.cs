@@ -22,12 +22,13 @@ public class ObjectScatter : MonoBehaviour
         {
             float randX = Random.Range(xMin, xMax);
             float randZ = Random.Range(zMin, zMax);
-            if (xInner < Mathf.Abs(randX) || zInner < Mathf.Abs(randZ))
+            bool withinInnerBox = Mathf.Abs(randX) <= xInner && Mathf.Abs(randZ) <= zInner;
+            if (!withinInnerBox)
             {
                 GameObject obj = Instantiate(objects[Random.Range(0, objects.Length)], new Vector3(randX, calculateY(randX, randZ), randZ), Quaternion.identity);
                 obj.transform.parent = transform;
-                transform.Rotate(Vector3.up, Random.Range(-90f, 90f));
-                transform.localScale = new Vector3(randomScale, randomScale, randomScale);
+                obj.transform.Rotate(Vector3.up, Random.Range(-90f, 90f));
+                obj.transform.localScale = new Vector3(randomScale, randomScale, randomScale);
             }
         }
     }
